@@ -29,10 +29,10 @@ namespace CompleteProject
                 // ... set the destination of the nav mesh agent to the player.
                 nav.SetDestination (player.position);
             }
-            // Otherwise...
+             //Otherwise...
             else
             {
-                // ... disable the nav mesh agent.
+            //     ... disable the nav mesh agent.
                 nav.enabled = false;
             }
         }
