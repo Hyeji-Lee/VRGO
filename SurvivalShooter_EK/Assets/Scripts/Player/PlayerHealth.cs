@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
     Animator anim;
     AudioSource playerAudio;
     PlayerMovement playerMovement;
-    //PlayerShooting playerShooting;
+    PlayerShooting playerShooting;
     bool isDead;
     bool damaged;
 
@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
-        //playerShooting = GetComponentInChildren <PlayerShooting> ();
+        playerShooting = GetComponentInChildren <PlayerShooting> ();
         currentHealth = startingHealth;
     }
 
@@ -47,9 +47,9 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void TakeDamage (int amount)
+    public void TakeDamage (int amount) // amount = the amount of damage player took
     {
-        damaged = true;
+		damaged = true; //for flickering image when damaged
 
         currentHealth -= amount;
 
@@ -57,7 +57,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerAudio.Play ();
 
-        if(currentHealth <= 0 && !isDead)
+        if(currentHealth <= 0 && !isDead)// not already dead 
         {
             Death ();
         }
@@ -68,15 +68,15 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        //playerShooting.DisableEffects ();
+        playerShooting.DisableEffects ();
 
-        anim.SetTrigger ("Die");
+        anim.SetTrigger ("Die"); // play animation. parameter is "Dead" 
 
         playerAudio.clip = deathClip;
         playerAudio.Play ();
 
-        playerMovement.enabled = false;
-        //playerShooting.enabled = false;
+        playerMovement.enabled = false; // no more movement 
+        playerShooting.enabled = false;
     }
 
 

@@ -32,7 +32,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(isSinking)
         {
-            transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+            transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime); // moving per second
         }
     }
 
